@@ -84,9 +84,6 @@ namespace NDP_Project
             _camKutusu = new AtikKutusu(2200, 600);
             _metalKutusu = new AtikKutusu(2300, 800);
 
-            //IAtikKutusu[] atikKutulari = { organikAtikKutusu, kagitKutusu, camKutusu, metalKutusu };
-            //this.atikKutulari = atikKutulari;
-
             organikAtikListBox.Enabled = true;
             kagitListBox.Enabled = true;
             camListBox.Enabled = true;
@@ -112,7 +109,7 @@ namespace NDP_Project
             prgsBarCam.Value = 0;
             prgsBarMetal.Value = 0;
 
-            sureLabel.Text = "10";
+            sureLabel.Text = "60";
             puanLabel.Text = "0";
 
             sureLabel.BackColor = Color.DodgerBlue;
