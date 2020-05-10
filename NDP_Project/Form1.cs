@@ -17,23 +17,22 @@ namespace NDP_Project
             InitializeComponent();
         }
 
-        private String[] atikIsimleri;
+        private String[] _atikIsimleri;
 
-        private IAtik camSise;
-        private IAtik bardak;
-        private IAtik gazete;
-        private IAtik dergi;
-        private IAtik domates;
-        private IAtik salatalik;
-        private IAtik kolaKutusu;
-        private IAtik salcaKutusu;
-        private IAtik[] atiklar;
+        private IAtik _camSise;
+        private IAtik _bardak;
+        private IAtik _gazete;
+        private IAtik _dergi;
+        private IAtik _domates;
+        private IAtik _salatalik;
+        private IAtik _kolaKutusu;
+        private IAtik _salcaKutusu;
+        private IAtik[] _atiklar;
 
-        IAtikKutusu organikAtikKutusu;
-        IAtikKutusu kagitKutusu;
-        IAtikKutusu camKutusu;
-        IAtikKutusu metalKutusu;
-        IAtikKutusu[] atikKutulari;
+        private IAtikKutusu _organikAtikKutusu;
+        private IAtikKutusu _kagitKutusu;
+        private IAtikKutusu _camKutusu;
+        private IAtikKutusu _metalKutusu;
 
         private IAtik _anlikGelenAtik;
         private int _guncelAtikSayi;
@@ -42,6 +41,21 @@ namespace NDP_Project
         {
             pictureBoxAtık.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            organikAtikListBox.Enabled = false;
+            kagitListBox.Enabled = false;
+            camListBox.Enabled = false;
+            metalListBox.Enabled = false;
+
+            organikAtikEkleBtn.Enabled = false;
+            kagitEkleBtn.Enabled = false;
+            camEkleBtn.Enabled = false;
+            metalEkleBtn.Enabled = false;
+
+            organikAtikBosaltBtn.Enabled = false;
+            kagitBosaltBtn.Enabled = false;
+            camBosaltBtn.Enabled = false;
+            metalBosaltBtn.Enabled = false;
+
             sureLabel.Text = "60";
             puanLabel.Text = "0";
         }
@@ -49,26 +63,26 @@ namespace NDP_Project
         private void NewGame_Click(object sender, EventArgs e)
         {
             string[] tempAtikIsim = { "Cam Şişe", "Bardak", "Gazete", "Dergi", "Domates", "Salatalık", "Kola Kutusu", "Salça Kutusu" };
-            atikIsimleri = tempAtikIsim;
+            _atikIsimleri = tempAtikIsim;
             tempAtikIsim = null;
 
-            camSise = new Atik(600, Image.FromFile("CamSise.jpg"));
-            bardak = new Atik(250, Image.FromFile("Bardak.jpg"));
-            gazete = new Atik(250, Image.FromFile("Gazete.jpg"));
-            dergi = new Atik(600, Image.FromFile("Dergi.png"));
-            domates = new Atik(150, Image.FromFile("Domates.jpg"));
-            salatalik = new Atik(120, Image.FromFile("Salatalik.jpg"));
-            kolaKutusu = new Atik(350, Image.FromFile("KolaKutusu.jpg"));
-            salcaKutusu = new Atik(550, Image.FromFile("SalcaKutusu.jpg"));
+            _camSise = new Atik(600, Image.FromFile("CamSise.jpg"));
+            _bardak = new Atik(250, Image.FromFile("Bardak.jpg"));
+            _gazete = new Atik(250, Image.FromFile("Gazete.jpg"));
+            _dergi = new Atik(200, Image.FromFile("Dergi.png"));
+            _domates = new Atik(150, Image.FromFile("Domates.jpg"));
+            _salatalik = new Atik(120, Image.FromFile("Salatalik.jpg"));
+            _kolaKutusu = new Atik(350, Image.FromFile("KolaKutusu.jpg"));
+            _salcaKutusu = new Atik(550, Image.FromFile("SalcaKutusu.jpg"));
 
-            IAtik[] atiklar = { camSise, bardak, gazete, dergi, domates, salatalik, kolaKutusu, salcaKutusu };
-            this.atiklar = atiklar;
+            IAtik[] atiklar = { _camSise, _bardak, _gazete, _dergi, _domates, _salatalik, _kolaKutusu, _salcaKutusu };
+            this._atiklar = atiklar;
 
 
-            organikAtikKutusu = new AtikKutusu(700, 0);
-            kagitKutusu = new AtikKutusu(1200, 1000);
-            camKutusu = new AtikKutusu(2200, 600);
-            metalKutusu = new AtikKutusu(2300, 800);
+            _organikAtikKutusu = new AtikKutusu(700, 0);
+            _kagitKutusu = new AtikKutusu(1200, 1000);
+            _camKutusu = new AtikKutusu(2200, 600);
+            _metalKutusu = new AtikKutusu(2300, 800);
 
             //IAtikKutusu[] atikKutulari = { organikAtikKutusu, kagitKutusu, camKutusu, metalKutusu };
             //this.atikKutulari = atikKutulari;
@@ -77,6 +91,16 @@ namespace NDP_Project
             kagitListBox.Enabled = true;
             camListBox.Enabled = true;
             metalListBox.Enabled = true;
+
+            organikAtikEkleBtn.Enabled = true;
+            kagitEkleBtn.Enabled = true;
+            camEkleBtn.Enabled = true;
+            metalEkleBtn.Enabled = true;
+
+            organikAtikBosaltBtn.Enabled = true;
+            kagitBosaltBtn.Enabled = true;
+            camBosaltBtn.Enabled = true;
+            metalBosaltBtn.Enabled = true;
 
             organikAtikListBox.Items.Clear();
             kagitListBox.Items.Clear();
@@ -88,7 +112,7 @@ namespace NDP_Project
             prgsBarCam.Value = 0;
             prgsBarMetal.Value = 0;
 
-            sureLabel.Text = "60";
+            sureLabel.Text = "10";
             puanLabel.Text = "0";
 
             sureLabel.BackColor = Color.DodgerBlue;
@@ -126,9 +150,9 @@ namespace NDP_Project
         private void AtikOlustur()
         {
             Random rand = new Random();
-            _guncelAtikSayi = rand.Next(0, atikIsimleri.Length);
+            _guncelAtikSayi = rand.Next(0, _atikIsimleri.Length);
 
-            _anlikGelenAtik = atiklar[_guncelAtikSayi];
+            _anlikGelenAtik = _atiklar[_guncelAtikSayi];
             pictureBoxAtık.Image = _anlikGelenAtik.Image;
         }
 
@@ -140,7 +164,6 @@ namespace NDP_Project
             puanLabel.BackColor = Color.AliceBlue;
             puanLabel.ForeColor = Color.DodgerBlue;
 
-            sureLabel.Text = "60";
             yeniOyunBtn.ForeColor = Color.White;
 
             organikAtikListBox.Enabled = false;
@@ -148,14 +171,42 @@ namespace NDP_Project
             camListBox.Enabled = false;
             metalListBox.Enabled = false;
 
+            organikAtikEkleBtn.Enabled = false;
+            kagitEkleBtn.Enabled = false;
+            camEkleBtn.Enabled = false;
+            metalEkleBtn.Enabled = false;
+
+            organikAtikBosaltBtn.Enabled = false;
+            kagitBosaltBtn.Enabled = false;
+            camBosaltBtn.Enabled = false;
+            metalBosaltBtn.Enabled = false;
+
+            string[] tempAtikIsim = null;
+
+            _camSise = null;
+            _bardak = null;
+            _gazete = null;
+            _dergi = null;
+            _domates = null;
+            _salatalik = null;
+            _kolaKutusu = null;
+            _salcaKutusu = null;
+
+            this._atiklar = null;
+
+
+            _organikAtikKutusu = null;
+            _kagitKutusu = null;
+            _camKutusu = null;
+            _metalKutusu = null;
         }
 
         private void OrganikAtikEkleBtn_Click(object sender, EventArgs e)
         {
-            if (organikAtikKutusu.Ekle((Atik)_anlikGelenAtik) && (atikIsimleri[_guncelAtikSayi] == "Domates" || atikIsimleri[_guncelAtikSayi] == "Salatalık"))
+            if (_organikAtikKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Domates" || _atikIsimleri[_guncelAtikSayi] == "Salatalık"))
             {
-                organikAtikListBox.Items.Add(atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
-                prgsBarOrganikAtik.Value = organikAtikKutusu.DolulukOrani;
+                organikAtikListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
+                prgsBarOrganikAtik.Value = _organikAtikKutusu.DolulukOrani;
 
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
 
@@ -169,9 +220,9 @@ namespace NDP_Project
 
         private void OrganikAtikBosaltBtn_Click(object sender, EventArgs e)
         {
-            if (organikAtikKutusu.Bosalt())
+            if (_organikAtikKutusu.Bosalt())
             {
-                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + organikAtikKutusu.BosaltmaPuani).ToString();
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _organikAtikKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
                 
                 organikAtikListBox.Items.Clear();
@@ -185,10 +236,10 @@ namespace NDP_Project
 
         private void KagitEkleBtn_Click(object sender, EventArgs e)
         {
-            if (kagitKutusu.Ekle((Atik)_anlikGelenAtik) && (atikIsimleri[_guncelAtikSayi] == "Gazete" || atikIsimleri[_guncelAtikSayi] == "Dergi"))
+            if (_kagitKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Gazete" || _atikIsimleri[_guncelAtikSayi] == "Dergi"))
             {
-                kagitListBox.Items.Add(atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
-                prgsBarKagit.Value = kagitKutusu.DolulukOrani;
+                kagitListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
+                prgsBarKagit.Value = _kagitKutusu.DolulukOrani;
 
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
 
@@ -202,9 +253,9 @@ namespace NDP_Project
 
         private void KagitBosaltBtn_Click(object sender, EventArgs e)
         {
-            if (kagitKutusu.Bosalt())
+            if (_kagitKutusu.Bosalt())
             {
-                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + kagitKutusu.BosaltmaPuani).ToString();
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _kagitKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
 
                 kagitListBox.Items.Clear();
@@ -218,10 +269,10 @@ namespace NDP_Project
 
         private void CamEkleBtn_Click(object sender, EventArgs e)
         {
-            if (camKutusu.Ekle((Atik)_anlikGelenAtik) && (atikIsimleri[_guncelAtikSayi] == "Cam Şişe" || atikIsimleri[_guncelAtikSayi] == "Bardak"))
+            if (_camKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Cam Şişe" || _atikIsimleri[_guncelAtikSayi] == "Bardak"))
             {
-                camListBox.Items.Add(atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
-                prgsBarCam.Value = camKutusu.DolulukOrani;
+                camListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
+                prgsBarCam.Value = _camKutusu.DolulukOrani;
 
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
 
@@ -235,9 +286,9 @@ namespace NDP_Project
 
         private void CamBosaltBtn_Click(object sender, EventArgs e)
         {
-            if (camKutusu.Bosalt())
+            if (_camKutusu.Bosalt())
             {
-                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + camKutusu.BosaltmaPuani).ToString();
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _camKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
 
                 camListBox.Items.Clear();
@@ -251,10 +302,10 @@ namespace NDP_Project
 
         private void MetalEkleBtn_Click(object sender, EventArgs e)
         {
-            if (metalKutusu.Ekle((Atik)_anlikGelenAtik) && (atikIsimleri[_guncelAtikSayi] == "Kola Kutusu" || atikIsimleri[_guncelAtikSayi] == "Salça Kutusu"))
+            if (_metalKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Kola Kutusu" || _atikIsimleri[_guncelAtikSayi] == "Salça Kutusu"))
             {
-                metalListBox.Items.Add(atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
-                prgsBarMetal.Value = metalKutusu.DolulukOrani;
+                metalListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
+                prgsBarMetal.Value = _metalKutusu.DolulukOrani;
 
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
 
@@ -268,9 +319,9 @@ namespace NDP_Project
 
         private void MetalBosaltBtn_Click(object sender, EventArgs e)
         {
-            if (metalKutusu.Bosalt())
+            if (_metalKutusu.Bosalt())
             {
-                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + metalKutusu.BosaltmaPuani).ToString();
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _metalKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
 
                 metalListBox.Items.Clear();
