@@ -222,6 +222,7 @@
             this.organikAtikBosaltBtn.TabIndex = 6;
             this.organikAtikBosaltBtn.Text = "BOŞALT";
             this.organikAtikBosaltBtn.UseVisualStyleBackColor = false;
+            this.organikAtikBosaltBtn.Click += new System.EventHandler(this.OrganikAtikBosaltBtn_Click);
             // 
             // prgsBarOrganikAtik
             // 
@@ -260,8 +261,9 @@
             this.kagitEkleBtn.Name = "kagitEkleBtn";
             this.kagitEkleBtn.Size = new System.Drawing.Size(126, 30);
             this.kagitEkleBtn.TabIndex = 13;
-            this.kagitEkleBtn.Text = "BOŞALT";
+            this.kagitEkleBtn.Text = "KAĞIT";
             this.kagitEkleBtn.UseVisualStyleBackColor = false;
+            this.kagitEkleBtn.Click += new System.EventHandler(this.KagitEkleBtn_Click);
             // 
             // kagitBosaltBtn
             // 
@@ -274,6 +276,7 @@
             this.kagitBosaltBtn.TabIndex = 9;
             this.kagitBosaltBtn.Text = "BOŞALT";
             this.kagitBosaltBtn.UseVisualStyleBackColor = false;
+            this.kagitBosaltBtn.Click += new System.EventHandler(this.KagitBosaltBtn_Click);
             // 
             // prgsBarKagit
             // 
@@ -312,7 +315,7 @@
             this.metalEkleBtn.Name = "metalEkleBtn";
             this.metalEkleBtn.Size = new System.Drawing.Size(126, 30);
             this.metalEkleBtn.TabIndex = 15;
-            this.metalEkleBtn.Text = "BOŞALT";
+            this.metalEkleBtn.Text = "METAL";
             this.metalEkleBtn.UseVisualStyleBackColor = false;
             // 
             // metalBosaltBtn
@@ -364,8 +367,9 @@
             this.camEkleBtn.Name = "camEkleBtn";
             this.camEkleBtn.Size = new System.Drawing.Size(126, 30);
             this.camEkleBtn.TabIndex = 14;
-            this.camEkleBtn.Text = "BOŞALT";
+            this.camEkleBtn.Text = "CAM";
             this.camEkleBtn.UseVisualStyleBackColor = false;
+            this.camEkleBtn.Click += new System.EventHandler(this.CamEkleBtn_Click);
             // 
             // camBosaltBtn
             // 
@@ -378,6 +382,7 @@
             this.camBosaltBtn.TabIndex = 9;
             this.camBosaltBtn.Text = "BOŞALT";
             this.camBosaltBtn.UseVisualStyleBackColor = false;
+            this.camBosaltBtn.Click += new System.EventHandler(this.CamBosaltBtn_Click);
             // 
             // prgsBarCam
             // 

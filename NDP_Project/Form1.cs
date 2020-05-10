@@ -166,5 +166,87 @@ namespace NDP_Project
                 return;
             }
         }
+
+        private void OrganikAtikBosaltBtn_Click(object sender, EventArgs e)
+        {
+            if (organikAtikKutusu.Bosalt())
+            {
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + organikAtikKutusu.BosaltmaPuani).ToString();
+                sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
+                
+                organikAtikListBox.Items.Clear();
+                prgsBarOrganikAtik.Value = 0;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void KagitEkleBtn_Click(object sender, EventArgs e)
+        {
+            if (kagitKutusu.Ekle((Atik)_anlikGelenAtik) && (atikIsimleri[_guncelAtikSayi] == "Gazete" || atikIsimleri[_guncelAtikSayi] == "Dergi"))
+            {
+                kagitListBox.Items.Add(atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
+                prgsBarKagit.Value = kagitKutusu.DolulukOrani;
+
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
+
+                AtikOlustur();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void KagitBosaltBtn_Click(object sender, EventArgs e)
+        {
+            if (kagitKutusu.Bosalt())
+            {
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + kagitKutusu.BosaltmaPuani).ToString();
+                sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
+
+                kagitListBox.Items.Clear();
+                prgsBarKagit.Value = 0;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void CamEkleBtn_Click(object sender, EventArgs e)
+        {
+            if (camKutusu.Ekle((Atik)_anlikGelenAtik) && (atikIsimleri[_guncelAtikSayi] == "Cam Şişe" || atikIsimleri[_guncelAtikSayi] == "Bardak"))
+            {
+                camListBox.Items.Add(atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
+                prgsBarCam.Value = camKutusu.DolulukOrani;
+
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
+
+                AtikOlustur();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void CamBosaltBtn_Click(object sender, EventArgs e)
+        {
+            if (camKutusu.Bosalt())
+            {
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + camKutusu.BosaltmaPuani).ToString();
+                sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
+
+                camListBox.Items.Clear();
+                prgsBarCam.Value = 0;
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }
