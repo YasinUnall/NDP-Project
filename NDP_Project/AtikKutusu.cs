@@ -18,7 +18,7 @@ namespace NDP_Project
 
         public int BosaltmaPuani { get; } //Boşaltma puanını döndürür.
 
-        //İlk atamaların yapıldığı kurucu fonksiyon.
+        //İlk atamaların yapıldığı kurucu method.
         public AtikKutusu(int maxKapasite, int bosaltmaPuani)
         {
             this._maxKapasite = maxKapasite;

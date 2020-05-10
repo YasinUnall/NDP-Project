@@ -20,17 +20,21 @@ namespace NDP_Project
         private String[] _atikIsimleri;
 
         //Program süresince farklı method ve event methodlarından erişilebilirlik için
-        //tanımlanmış private fieldlar
+        //aşağıda içi boş private fieldlar tanımlanmıştır. İlk nesne oluşumları
+        //programın içinde yeni oyuna başlanırken yapılmaktadır.
+        
+        //Bu fieldlarda atik nesneleri tutulur.
         private IAtik _camSise;
-        private IAtik _bardak;
-        private IAtik _gazete;
-        private IAtik _dergi;
+        private IAtik _bardak; 
+        private IAtik _gazete; 
+        private IAtik _dergi; 
         private IAtik _domates;
         private IAtik _salatalik;
         private IAtik _kolaKutusu;
         private IAtik _salcaKutusu;
         private IAtik[] _atiklar;
 
+        //Bu fieldlarda atık kutusu nesneleri tutulur.
         private IAtikKutusu _organikAtikKutusu;
         private IAtikKutusu _kagitKutusu;
         private IAtikKutusu _camKutusu;
@@ -41,23 +45,29 @@ namespace NDP_Project
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Resmin düzgün görülmesi için mod ve arkaplan rengi ayarlaması yapılır.
             pictureBoxAtık.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxAtık.BackColor = Color.LightGray;
 
+            //List boxlar deaktif edilir.
             organikAtikListBox.Enabled = false;
             kagitListBox.Enabled = false;
             camListBox.Enabled = false;
             metalListBox.Enabled = false;
 
+            //Ekle butonları deaktif edilir.
             organikAtikEkleBtn.Enabled = false;
             kagitEkleBtn.Enabled = false;
             camEkleBtn.Enabled = false;
             metalEkleBtn.Enabled = false;
 
+            //Boşalt butonları deaktif edilir.
             organikAtikBosaltBtn.Enabled = false;
             kagitBosaltBtn.Enabled = false;
             camBosaltBtn.Enabled = false;
             metalBosaltBtn.Enabled = false;
 
+            //Süre ve puan tutan labellara başlangıç değerleri atanır.
             sureLabel.Text = "60";
             puanLabel.Text = "0";
         }

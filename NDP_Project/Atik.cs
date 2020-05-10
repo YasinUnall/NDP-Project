@@ -8,9 +8,10 @@ namespace NDP_Project
 {
     public class Atik : IAtik
     {
-        public int Hacim { get; }
-        public System.Drawing.Image Image { get; }
+        public int Hacim { get; } //Atık hacmini tutar.
+        public System.Drawing.Image Image { get; } //Atık resmini tutar.
 
+        //İlk atamaların yapıldığı kurucu method.
         public Atik(int hacim, System.Drawing.Image image)
         {
             this.Hacim = hacim;
