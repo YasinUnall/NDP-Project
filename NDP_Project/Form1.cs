@@ -34,8 +34,8 @@ namespace NDP_Project
         private IAtikKutusu _camKutusu;
         private IAtikKutusu _metalKutusu;
 
-        private IAtik _anlikGelenAtik;
-        private int _guncelAtikSayi;
+        private IAtik _anlikGelenAtik; //Son gelen atik bilgilerini tutan property
+        private int _guncelAtikSayi; //Son gelen atığın ilişkilendirildiği numarayı tutar.
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -60,12 +60,15 @@ namespace NDP_Project
             puanLabel.Text = "0";
         }
 
+        //Oyun başlangıcında gerekli olan nesneleri oluşturur, renkleri ayarlar ve diğer düzenlemeleri yapar. 
         private void NewGame_Click(object sender, EventArgs e)
         {
+            //isimlerin list boxlara yazılabilmesi için isimleri tutar.
             string[] tempAtikIsim = { "Cam Şişe", "Bardak", "Gazete", "Dergi", "Domates", "Salatalık", "Kola Kutusu", "Salça Kutusu" };
             _atikIsimleri = tempAtikIsim;
             tempAtikIsim = null;
 
+            //private propertyler içinde atik nesneleri oluşturulur.
             _camSise = new Atik(600, Image.FromFile("CamSise.jpg"));
             _bardak = new Atik(250, Image.FromFile("Bardak.jpg"));
             _gazete = new Atik(250, Image.FromFile("Gazete.jpg"));
@@ -84,34 +87,41 @@ namespace NDP_Project
             _camKutusu = new AtikKutusu(2200, 600);
             _metalKutusu = new AtikKutusu(2300, 800);
 
+            //List boxlar aktif edilir.
             organikAtikListBox.Enabled = true;
             kagitListBox.Enabled = true;
             camListBox.Enabled = true;
             metalListBox.Enabled = true;
 
+            //Ekle butonları aktif edilir.
             organikAtikEkleBtn.Enabled = true;
             kagitEkleBtn.Enabled = true;
             camEkleBtn.Enabled = true;
             metalEkleBtn.Enabled = true;
 
+            //Boşalt butonları aktif edilir.
             organikAtikBosaltBtn.Enabled = true;
             kagitBosaltBtn.Enabled = true;
             camBosaltBtn.Enabled = true;
             metalBosaltBtn.Enabled = true;
 
+            //List boxlar temizlenir.
             organikAtikListBox.Items.Clear();
             kagitListBox.Items.Clear();
             camListBox.Items.Clear();
             metalListBox.Items.Clear();
 
+            //Progress barlar temizlenir.
             prgsBarOrganikAtik.Value = 0;
             prgsBarKagit.Value = 0;
             prgsBarCam.Value = 0;
             prgsBarMetal.Value = 0;
 
+            //Süre ve puan tutan labellara başlangıç değerleri atanır.
             sureLabel.Text = "60";
             puanLabel.Text = "0";
 
+            //Süre ve puan tutan labelların ve yeni oyun butonunun renk paletleri oyun durumuna geçirilir.
             sureLabel.BackColor = Color.DodgerBlue;
             sureLabel.ForeColor = Color.AliceBlue;
 
@@ -120,30 +130,34 @@ namespace NDP_Project
 
             yeniOyunBtn.ForeColor = Color.Black;
 
+            //Timerın aktifleşme saniyesi ayarlanır ve ardından timer başlatılır.
             oyunTimer.Interval = 1000;
             oyunTimer.Enabled = true;
 
+            //Yeni oyunun ilk atığı oluşur.
             AtikOlustur();
         }
 
+        //Süre tutmak ve oyunun bittiğini anlamak için yazılmış timer tick event.
         private void OyunTimer_Tick(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(sureLabel.Text) > 0)
+            if (Convert.ToInt32(sureLabel.Text) > 0) //Süre 0 değilse saniyeyi bir düşürür.
             {
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) - 1).ToString();
             }
-            else
+            else //Süre bittiyse SureBitis methodunu çağırarak gerekli ayarlamaları yaptırır.
             {
                 SureBitis();
-                oyunTimer.Enabled = false;
             }
         }
 
+        //Oyundan çıkılır(Form uygulaması kapanır).
         private void CikisBtn_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //Rastgele bir atik oluşturulur.
         private void AtikOlustur()
         {
             Random rand = new Random();
@@ -155,6 +169,8 @@ namespace NDP_Project
 
         private void SureBitis()
         {
+            oyunTimer.Enabled = false;
+
             sureLabel.BackColor = Color.AliceBlue;
             sureLabel.ForeColor = Color.DodgerBlue;
 

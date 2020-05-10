@@ -8,9 +8,9 @@ namespace NDP_Project
 {
     public class AtikKutusu : IAtikKutusu
     {
-        private int _maxKapasite;
+        private int _maxKapasite; //Maksimum kapasiteyi tutar.
 
-        public int Kapasite { get; set; }
+        public int Kapasite { get; set; } //Boş olan kapasiteyi tutar.
         public int DoluHacim { get { return (_maxKapasite - Kapasite); } }
         public int DolulukOrani { get { return (int)(((float)DoluHacim / _maxKapasite) * 100); } }
 
@@ -23,7 +23,7 @@ namespace NDP_Project
             this.BosaltmaPuani = bosaltmaPuani;
         }
 
-        public bool Ekle(Atik atik)
+        public bool Ekle(Atik atik) //Atik kutusuna atik ekler.
         {
             if (Kapasite >= atik.Hacim)
             {
