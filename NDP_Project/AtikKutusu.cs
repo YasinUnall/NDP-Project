@@ -11,11 +11,14 @@ namespace NDP_Project
         private int _maxKapasite; //Maksimum kapasiteyi tutar.
 
         public int Kapasite { get; set; } //Boş olan kapasiteyi tutar.
-        public int DoluHacim { get { return (_maxKapasite - Kapasite); } }
+        public int DoluHacim { get { return (_maxKapasite - Kapasite); } } //Dolu hacmi döndürür
+
+        //Doluluk oranını döndürür.
         public int DolulukOrani { get { return (int)(((float)DoluHacim / _maxKapasite) * 100); } }
 
-        public int BosaltmaPuani { get; }
+        public int BosaltmaPuani { get; } //Boşaltma puanını döndürür.
 
+        //İlk atamaların yapıldığı kurucu fonksiyon.
         public AtikKutusu(int maxKapasite, int bosaltmaPuani)
         {
             this._maxKapasite = maxKapasite;
@@ -25,7 +28,8 @@ namespace NDP_Project
 
         public bool Ekle(Atik atik) //Atik kutusuna atik ekler.
         {
-            if (Kapasite >= atik.Hacim)
+            //Gelen atık hacmi kutunun kalan yerinden az ise atığı kutuya ekler.
+            if (Kapasite >= atik.Hacim) 
             {
                 Kapasite -= atik.Hacim;
                 return true;
@@ -35,9 +39,9 @@ namespace NDP_Project
                 return false;
             }
         }
-        public bool Bosalt()
+        public bool Bosalt() //Atık kutusunu boşaltır.
         {
-            if (DolulukOrani >= 75)
+            if (DolulukOrani >= 75) //Doluluk oranı %75 veya üzeri ise kutuyu boşaltır.
             {
                 Kapasite = _maxKapasite;
                 return true;

@@ -19,6 +19,8 @@ namespace NDP_Project
 
         private String[] _atikIsimleri;
 
+        //Program süresince farklı method ve event methodlarından erişilebilirlik için
+        //tanımlanmış private fieldlar
         private IAtik _camSise;
         private IAtik _bardak;
         private IAtik _gazete;
@@ -68,7 +70,7 @@ namespace NDP_Project
             _atikIsimleri = tempAtikIsim;
             tempAtikIsim = null;
 
-            //private propertyler içinde atik nesneleri oluşturulur.
+            //Atik nesneleri için tanımlanmış private fieldlar içinde atik nesneleri oluşturulur.
             _camSise = new Atik(600, Image.FromFile("CamSise.jpg"));
             _bardak = new Atik(250, Image.FromFile("Bardak.jpg"));
             _gazete = new Atik(250, Image.FromFile("Gazete.jpg"));
@@ -78,10 +80,11 @@ namespace NDP_Project
             _kolaKutusu = new Atik(350, Image.FromFile("KolaKutusu.jpg"));
             _salcaKutusu = new Atik(550, Image.FromFile("SalcaKutusu.jpg"));
 
+            //Atik nesnelerini random bir tane seçilebilmesi için diziye aktarılır.
             IAtik[] atiklar = { _camSise, _bardak, _gazete, _dergi, _domates, _salatalik, _kolaKutusu, _salcaKutusu };
             this._atiklar = atiklar;
 
-
+            //Atik kutusu nesneleri için tanımlanmış private fieldlar içinde atik kutusu nesneleri oluşturulur.
             _organikAtikKutusu = new AtikKutusu(700, 0);
             _kagitKutusu = new AtikKutusu(1200, 1000);
             _camKutusu = new AtikKutusu(2200, 600);
@@ -160,15 +163,21 @@ namespace NDP_Project
         //Rastgele bir atik oluşturulur.
         private void AtikOlustur()
         {
+            //Rastgele bir sayı oluşturulur ve _guncelAtikSayi içine aktarılır.
             Random rand = new Random();
             _guncelAtikSayi = rand.Next(0, _atikIsimleri.Length);
 
+            //Bir atık seçilir.
             _anlikGelenAtik = _atiklar[_guncelAtikSayi];
+
+            //Atığın resmi ilgili yere koyulur.
             pictureBoxAtık.Image = _anlikGelenAtik.Image;
         }
 
+        //Süre bittiğinde yapılacak işlemleri yapar.
         private void SureBitis()
         {
+            //Süre durdurulur ve renk paletleri düzenlenir.
             oyunTimer.Enabled = false;
 
             sureLabel.BackColor = Color.AliceBlue;
@@ -179,23 +188,28 @@ namespace NDP_Project
 
             yeniOyunBtn.ForeColor = Color.White;
 
+            //List boxlar deaktif edilir.
             organikAtikListBox.Enabled = false;
             kagitListBox.Enabled = false;
             camListBox.Enabled = false;
             metalListBox.Enabled = false;
 
+            //Ekle butonları deaktif edilir.
             organikAtikEkleBtn.Enabled = false;
             kagitEkleBtn.Enabled = false;
             camEkleBtn.Enabled = false;
             metalEkleBtn.Enabled = false;
 
+            //Boşalt butonları deaktif edilir.
             organikAtikBosaltBtn.Enabled = false;
             kagitBosaltBtn.Enabled = false;
             camBosaltBtn.Enabled = false;
             metalBosaltBtn.Enabled = false;
 
+            //İsimler temizlenir.
             string[] tempAtikIsim = null;
 
+            //Nesneler temizlenir.
             _camSise = null;
             _bardak = null;
             _gazete = null;
@@ -214,16 +228,20 @@ namespace NDP_Project
             _metalKutusu = null;
         }
 
+        //Organik atıkların eklenmesini kontrol eden buton eventi.
         private void OrganikAtikEkleBtn_Click(object sender, EventArgs e)
         {
+            //Organik atık kutusunun gelen atiğin hacmi kadar yeri var mı ve gelen atık organik atık mı kontrolü yapılır.
             if (_organikAtikKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Domates" || _atikIsimleri[_guncelAtikSayi] == "Salatalık"))
             {
+                //List boxa gelen atığın ismi ve hacmi eklenir. Progress bar kutunun dolan hacmi %'sinde doldurulur.
                 organikAtikListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
                 prgsBarOrganikAtik.Value = _organikAtikKutusu.DolulukOrani;
 
+                //Eklenen atığın hacmi kadar puan kazanılır.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
 
-                AtikOlustur();
+                AtikOlustur(); //Yeni rastgele bir atık oluşturulur.
             }
             else
             {
@@ -231,13 +249,17 @@ namespace NDP_Project
             }
         }
 
+        //Organik atıkların boşaltılmasını kontrol eden buton eventi
         private void OrganikAtikBosaltBtn_Click(object sender, EventArgs e)
         {
+            //Organik atık kutusunun Bosalt methodu çağrılarak kutunun boşaltıma uygun olup olmadığı kontrol edilir.
             if (_organikAtikKutusu.Bosalt())
             {
+                //Kutunun boşaltma puanı kadar puan kazanılır. Süreye 3 saniye eklenir.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _organikAtikKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
                 
+                //List box temizlenir ve progress bar resetlenir.
                 organikAtikListBox.Items.Clear();
                 prgsBarOrganikAtik.Value = 0;
             }
@@ -247,16 +269,20 @@ namespace NDP_Project
             }
         }
 
+        //Kağıt atık eklenmesini kontrol eden buton eventi.
         private void KagitEkleBtn_Click(object sender, EventArgs e)
         {
+            //Kağıt atık kutusunun gelen atiğin hacmi kadar yeri var mı ve gelen atık kağıt atık mı kontrolü yapılır.
             if (_kagitKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Gazete" || _atikIsimleri[_guncelAtikSayi] == "Dergi"))
             {
+                //List boxa gelen atığın ismi ve hacmi eklenir. Progress bar kutunun dolan hacmi %'sinde doldurulur.
                 kagitListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
                 prgsBarKagit.Value = _kagitKutusu.DolulukOrani;
 
+                //Eklenen atığın hacmi kadar puan kazanılır.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
 
-                AtikOlustur();
+                AtikOlustur(); //Yeni rastgele bir atık oluşturulur.
             }
             else
             {
@@ -264,13 +290,17 @@ namespace NDP_Project
             }
         }
 
+        //Kağıt atık boşaltılmasını kontrol eden buton eventi
         private void KagitBosaltBtn_Click(object sender, EventArgs e)
         {
+            //Kağıt kutusunun Bosalt methodu çağrılarak kutunun boşaltıma uygun olup olmadığı kontrol edilir.
             if (_kagitKutusu.Bosalt())
             {
+                //Kutunun boşaltma puanı kadar puan kazanılır. Süreye 3 saniye eklenir.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _kagitKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
 
+                //List box temizlenir ve progress bar resetlenir.
                 kagitListBox.Items.Clear();
                 prgsBarKagit.Value = 0;
             }
@@ -280,16 +310,20 @@ namespace NDP_Project
             }
         }
 
+        //Cam atık eklenmesini kontrol eden buton eventi.
         private void CamEkleBtn_Click(object sender, EventArgs e)
         {
+            //Cam atık kutusunun gelen atiğin hacmi kadar yeri var mı ve gelen atık cam atık mı kontrolü yapılır.
             if (_camKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Cam Şişe" || _atikIsimleri[_guncelAtikSayi] == "Bardak"))
             {
+                //List boxa gelen atığın ismi ve hacmi eklenir. Progress bar kutunun dolan hacmi %'sinde doldurulur.
                 camListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
                 prgsBarCam.Value = _camKutusu.DolulukOrani;
 
+                //Eklenen atığın hacmi kadar puan kazanılır.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
 
-                AtikOlustur();
+                AtikOlustur(); //Yeni rastgele bir atık oluşturulur.
             }
             else
             {
@@ -297,13 +331,17 @@ namespace NDP_Project
             }
         }
 
+        //Cam atık boşaltılmasını kontrol eden buton eventi
         private void CamBosaltBtn_Click(object sender, EventArgs e)
         {
+            //Cam kutusunun Bosalt methodu çağrılarak kutunun boşaltıma uygun olup olmadığı kontrol edilir.
             if (_camKutusu.Bosalt())
             {
+                //Kutunun boşaltma puanı kadar puan kazanılır. Süreye 3 saniye eklenir.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _camKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
 
+                //List box temizlenir ve progress bar resetlenir.
                 camListBox.Items.Clear();
                 prgsBarCam.Value = 0;
             }
@@ -313,16 +351,20 @@ namespace NDP_Project
             }
         }
 
+        //Metal atık eklenmesini kontrol eden buton eventi.
         private void MetalEkleBtn_Click(object sender, EventArgs e)
         {
+            //Metal atık kutusunun gelen atiğin hacmi kadar yeri var mı ve gelen atık metal atık mı kontrolü yapılır.
             if (_metalKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Kola Kutusu" || _atikIsimleri[_guncelAtikSayi] == "Salça Kutusu"))
             {
+                //List boxa gelen atığın ismi ve hacmi eklenir. Progress bar kutunun dolan hacmi %'sinde doldurulur.
                 metalListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
                 prgsBarMetal.Value = _metalKutusu.DolulukOrani;
 
+                //Eklenen atığın hacmi kadar puan kazanılır.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
 
-                AtikOlustur();
+                AtikOlustur(); //Yeni rastgele bir atık oluşturulur.
             }
             else
             {
@@ -330,13 +372,17 @@ namespace NDP_Project
             }
         }
 
+        //Metal atık boşaltılmasını kontrol eden buton eventi
         private void MetalBosaltBtn_Click(object sender, EventArgs e)
         {
+            //Metal kutusunun Bosalt methodu çağrılarak kutunun boşaltıma uygun olup olmadığı kontrol edilir.
             if (_metalKutusu.Bosalt())
             {
+                //Kutunun boşaltma puanı kadar puan kazanılır. Süreye 3 saniye eklenir.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _metalKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
 
+                //List box temizlenir ve progress bar resetlenir.
                 metalListBox.Items.Clear();
                 prgsBarMetal.Value = 0;
             }
