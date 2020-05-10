@@ -22,12 +22,12 @@ namespace NDP_Project
         //Program süresince farklı method ve event methodlarından erişilebilirlik için
         //aşağıda içi boş private fieldlar tanımlanmıştır. İlk nesne oluşumları
         //programın içinde yeni oyuna başlanırken yapılmaktadır.
-        
+
         //Bu fieldlarda atik nesneleri tutulur.
         private IAtik _camSise;
-        private IAtik _bardak; 
-        private IAtik _gazete; 
-        private IAtik _dergi; 
+        private IAtik _bardak;
+        private IAtik _gazete;
+        private IAtik _dergi;
         private IAtik _domates;
         private IAtik _salatalik;
         private IAtik _kolaKutusu;
@@ -242,7 +242,7 @@ namespace NDP_Project
         private void OrganikAtikEkleBtn_Click(object sender, EventArgs e)
         {
             //Organik atık kutusunun gelen atiğin hacmi kadar yeri var mı ve gelen atık organik atık mı kontrolü yapılır.
-            if (_organikAtikKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Domates" || _atikIsimleri[_guncelAtikSayi] == "Salatalık"))
+            if ((_atikIsimleri[_guncelAtikSayi] == "Domates" || _atikIsimleri[_guncelAtikSayi] == "Salatalık") && _organikAtikKutusu.Ekle((Atik)_anlikGelenAtik))
             {
                 //List boxa gelen atığın ismi ve hacmi eklenir. Progress bar kutunun dolan hacmi %'sinde doldurulur.
                 organikAtikListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
@@ -268,7 +268,7 @@ namespace NDP_Project
                 //Kutunun boşaltma puanı kadar puan kazanılır. Süreye 3 saniye eklenir.
                 puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _organikAtikKutusu.BosaltmaPuani).ToString();
                 sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
-                
+
                 //List box temizlenir ve progress bar resetlenir.
                 organikAtikListBox.Items.Clear();
                 prgsBarOrganikAtik.Value = 0;
@@ -283,7 +283,7 @@ namespace NDP_Project
         private void KagitEkleBtn_Click(object sender, EventArgs e)
         {
             //Kağıt atık kutusunun gelen atiğin hacmi kadar yeri var mı ve gelen atık kağıt atık mı kontrolü yapılır.
-            if (_kagitKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Gazete" || _atikIsimleri[_guncelAtikSayi] == "Dergi"))
+            if ((_atikIsimleri[_guncelAtikSayi] == "Gazete" || _atikIsimleri[_guncelAtikSayi] == "Dergi") && _kagitKutusu.Ekle((Atik)_anlikGelenAtik))
             {
                 //List boxa gelen atığın ismi ve hacmi eklenir. Progress bar kutunun dolan hacmi %'sinde doldurulur.
                 kagitListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
@@ -324,7 +324,7 @@ namespace NDP_Project
         private void CamEkleBtn_Click(object sender, EventArgs e)
         {
             //Cam atık kutusunun gelen atiğin hacmi kadar yeri var mı ve gelen atık cam atık mı kontrolü yapılır.
-            if (_camKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Cam Şişe" || _atikIsimleri[_guncelAtikSayi] == "Bardak"))
+            if ((_atikIsimleri[_guncelAtikSayi] == "Cam Şişe" || _atikIsimleri[_guncelAtikSayi] == "Bardak") && _camKutusu.Ekle((Atik)_anlikGelenAtik))
             {
                 //List boxa gelen atığın ismi ve hacmi eklenir. Progress bar kutunun dolan hacmi %'sinde doldurulur.
                 camListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
@@ -365,7 +365,7 @@ namespace NDP_Project
         private void MetalEkleBtn_Click(object sender, EventArgs e)
         {
             //Metal atık kutusunun gelen atiğin hacmi kadar yeri var mı ve gelen atık metal atık mı kontrolü yapılır.
-            if (_metalKutusu.Ekle((Atik)_anlikGelenAtik) && (_atikIsimleri[_guncelAtikSayi] == "Kola Kutusu" || _atikIsimleri[_guncelAtikSayi] == "Salça Kutusu"))
+            if ((_atikIsimleri[_guncelAtikSayi] == "Kola Kutusu" || _atikIsimleri[_guncelAtikSayi] == "Salça Kutusu") && _metalKutusu.Ekle((Atik)_anlikGelenAtik))
             {
                 //List boxa gelen atığın ismi ve hacmi eklenir. Progress bar kutunun dolan hacmi %'sinde doldurulur.
                 metalListBox.Items.Add(_atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
