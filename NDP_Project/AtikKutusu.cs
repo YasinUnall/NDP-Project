@@ -12,7 +12,7 @@ namespace NDP_Project
 
         public int Kapasite { get; set; }
         public int DoluHacim { get { return (_maxKapasite - Kapasite); } }
-        public int DolulukOrani { get { return ((DoluHacim / _maxKapasite) * 100); } }
+        public int DolulukOrani { get { return (int)(((float)DoluHacim / _maxKapasite) * 100); } }
 
         public int BosaltmaPuani { get; }
 
@@ -37,7 +37,7 @@ namespace NDP_Project
         }
         public bool Bosalt()
         {
-            if ((Kapasite / _maxKapasite) * 100 >= 75)
+            if (DolulukOrani >= 75)
             {
                 Kapasite = _maxKapasite;
                 return true;

@@ -317,6 +317,7 @@
             this.metalEkleBtn.TabIndex = 15;
             this.metalEkleBtn.Text = "METAL";
             this.metalEkleBtn.UseVisualStyleBackColor = false;
+            this.metalEkleBtn.Click += new System.EventHandler(this.MetalEkleBtn_Click);
             // 
             // metalBosaltBtn
             // 
@@ -329,6 +330,7 @@
             this.metalBosaltBtn.TabIndex = 12;
             this.metalBosaltBtn.Text = "BOŞALT";
             this.metalBosaltBtn.UseVisualStyleBackColor = false;
+            this.metalBosaltBtn.Click += new System.EventHandler(this.MetalBosaltBtn_Click);
             // 
             // prgsBarMetal
             // 

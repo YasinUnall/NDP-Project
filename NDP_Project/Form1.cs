@@ -88,7 +88,7 @@ namespace NDP_Project
             prgsBarCam.Value = 0;
             prgsBarMetal.Value = 0;
 
-            sureLabel.Text = "5";
+            sureLabel.Text = "60";
             puanLabel.Text = "0";
 
             sureLabel.BackColor = Color.DodgerBlue;
@@ -242,6 +242,39 @@ namespace NDP_Project
 
                 camListBox.Items.Clear();
                 prgsBarCam.Value = 0;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void MetalEkleBtn_Click(object sender, EventArgs e)
+        {
+            if (metalKutusu.Ekle((Atik)_anlikGelenAtik) && (atikIsimleri[_guncelAtikSayi] == "Kola Kutusu" || atikIsimleri[_guncelAtikSayi] == "Salça Kutusu"))
+            {
+                metalListBox.Items.Add(atikIsimleri[_guncelAtikSayi] + "(" + _anlikGelenAtik.Hacim + ")");
+                prgsBarMetal.Value = metalKutusu.DolulukOrani;
+
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + _anlikGelenAtik.Hacim).ToString();
+
+                AtikOlustur();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void MetalBosaltBtn_Click(object sender, EventArgs e)
+        {
+            if (metalKutusu.Bosalt())
+            {
+                puanLabel.Text = (Convert.ToInt32(puanLabel.Text) + metalKutusu.BosaltmaPuani).ToString();
+                sureLabel.Text = (Convert.ToInt32(sureLabel.Text) + 3).ToString();
+
+                metalListBox.Items.Clear();
+                prgsBarMetal.Value = 0;
             }
             else
             {
