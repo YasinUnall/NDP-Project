@@ -1,0 +1,10 @@
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\obj\Debug\NDP_Project.csprojAssemblyReference.cache
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\obj\Debug\NDP_Project.Form1.resources
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\obj\Debug\NDP_Project.Properties.Resources.resources
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\obj\Debug\NDP_Project.csproj.GenerateResource.cache
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\obj\Debug\NDP_Project.csproj.CoreCompileInputs.cache
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\bin\Debug\NDP_Project.pdb
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\obj\Debug\NDP_Project.pdb
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\bin\Debug\NDP_Project.exe.config
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\bin\Debug\NDP_Project.exe
+C:\Users\Shin\source\repos\NDP_Project\NDP_Project\obj\Debug\NDP_Project.exe
