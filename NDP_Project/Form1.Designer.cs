@@ -28,37 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxAtık = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnQuit = new System.Windows.Forms.Button();
-            this.lblPoints = new System.Windows.Forms.Label();
+            this.cikisBtn = new System.Windows.Forms.Button();
+            this.puanLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.lbl_surelabel = new System.Windows.Forms.Label();
-            this.btnNewGame = new System.Windows.Forms.Button();
+            this.sureLabel = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.yeniOyunBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnOrganikAtikBosalt = new System.Windows.Forms.Button();
+            this.organikAtikEkleBtn = new System.Windows.Forms.Button();
+            this.organikAtikBosaltBtn = new System.Windows.Forms.Button();
             this.prgsBarOrganikAtik = new System.Windows.Forms.ProgressBar();
-            this.lstOrganikAtik = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.organikAtikListBox = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnKagitBosalt = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.kagitEkleBtn = new System.Windows.Forms.Button();
+            this.kagitBosaltBtn = new System.Windows.Forms.Button();
             this.prgsBarKagit = new System.Windows.Forms.ProgressBar();
-            this.lstKagit = new System.Windows.Forms.ListBox();
+            this.kagitListBox = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnMetalBosalt = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.metalEkleBtn = new System.Windows.Forms.Button();
+            this.metalBosaltBtn = new System.Windows.Forms.Button();
             this.prgsBarMetal = new System.Windows.Forms.ProgressBar();
-            this.lstMetal = new System.Windows.Forms.ListBox();
+            this.metalListBox = new System.Windows.Forms.ListBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnCamBosalt = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.camEkleBtn = new System.Windows.Forms.Button();
+            this.camBosaltBtn = new System.Windows.Forms.Button();
             this.prgsBarCam = new System.Windows.Forms.ProgressBar();
-            this.lstCam = new System.Windows.Forms.ListBox();
+            this.camListBox = new System.Windows.Forms.ListBox();
+            this.oyunTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAtık)).BeginInit();
             this.panel2.SuspendLayout();
@@ -89,39 +91,40 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Lavender;
-            this.panel2.Controls.Add(this.btnQuit);
-            this.panel2.Controls.Add(this.lblPoints);
+            this.panel2.Controls.Add(this.cikisBtn);
+            this.panel2.Controls.Add(this.puanLabel);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.lblTime);
-            this.panel2.Controls.Add(this.lbl_surelabel);
-            this.panel2.Controls.Add(this.btnNewGame);
+            this.panel2.Controls.Add(this.sureLabel);
+            this.panel2.Controls.Add(this.label24);
+            this.panel2.Controls.Add(this.yeniOyunBtn);
             this.panel2.Location = new System.Drawing.Point(18, 205);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(185, 390);
             this.panel2.TabIndex = 1;
             // 
-            // btnQuit
+            // cikisBtn
             // 
-            this.btnQuit.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnQuit.Location = new System.Drawing.Point(12, 331);
-            this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(162, 46);
-            this.btnQuit.TabIndex = 5;
-            this.btnQuit.Text = "ÇIKIŞ";
-            this.btnQuit.UseVisualStyleBackColor = false;
+            this.cikisBtn.BackColor = System.Drawing.Color.SteelBlue;
+            this.cikisBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cikisBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cikisBtn.Location = new System.Drawing.Point(12, 331);
+            this.cikisBtn.Name = "cikisBtn";
+            this.cikisBtn.Size = new System.Drawing.Size(162, 46);
+            this.cikisBtn.TabIndex = 5;
+            this.cikisBtn.Text = "ÇIKIŞ";
+            this.cikisBtn.UseVisualStyleBackColor = false;
+            this.cikisBtn.Click += new System.EventHandler(this.CikisBtn_Click);
             // 
-            // lblPoints
+            // puanLabel
             // 
-            this.lblPoints.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPoints.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblPoints.Location = new System.Drawing.Point(12, 241);
-            this.lblPoints.Name = "lblPoints";
-            this.lblPoints.Size = new System.Drawing.Size(162, 65);
-            this.lblPoints.TabIndex = 4;
-            this.lblPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.puanLabel.BackColor = System.Drawing.Color.AliceBlue;
+            this.puanLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.puanLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.puanLabel.Location = new System.Drawing.Point(12, 241);
+            this.puanLabel.Name = "puanLabel";
+            this.puanLabel.Size = new System.Drawing.Size(162, 65);
+            this.puanLabel.TabIndex = 4;
+            this.puanLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -135,40 +138,41 @@
             this.label2.Text = "PUAN";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblTime
+            // sureLabel
             // 
-            this.lblTime.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblTime.Location = new System.Drawing.Point(12, 120);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(162, 65);
-            this.lblTime.TabIndex = 2;
-            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sureLabel.BackColor = System.Drawing.Color.AliceBlue;
+            this.sureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sureLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.sureLabel.Location = new System.Drawing.Point(12, 120);
+            this.sureLabel.Name = "sureLabel";
+            this.sureLabel.Size = new System.Drawing.Size(162, 65);
+            this.sureLabel.TabIndex = 2;
+            this.sureLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbl_surelabel
+            // label24
             // 
-            this.lbl_surelabel.BackColor = System.Drawing.Color.CadetBlue;
-            this.lbl_surelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_surelabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_surelabel.Location = new System.Drawing.Point(12, 86);
-            this.lbl_surelabel.Name = "lbl_surelabel";
-            this.lbl_surelabel.Size = new System.Drawing.Size(162, 25);
-            this.lbl_surelabel.TabIndex = 1;
-            this.lbl_surelabel.Text = "SÜRE";
-            this.lbl_surelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label24.BackColor = System.Drawing.Color.CadetBlue;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label24.Location = new System.Drawing.Point(12, 86);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(162, 25);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "SÜRE";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnNewGame
+            // yeniOyunBtn
             // 
-            this.btnNewGame.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewGame.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnNewGame.Location = new System.Drawing.Point(12, 12);
-            this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(162, 57);
-            this.btnNewGame.TabIndex = 0;
-            this.btnNewGame.Text = "YENİ OYUN";
-            this.btnNewGame.UseVisualStyleBackColor = false;
+            this.yeniOyunBtn.BackColor = System.Drawing.Color.SteelBlue;
+            this.yeniOyunBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yeniOyunBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.yeniOyunBtn.Location = new System.Drawing.Point(12, 12);
+            this.yeniOyunBtn.Name = "yeniOyunBtn";
+            this.yeniOyunBtn.Size = new System.Drawing.Size(162, 57);
+            this.yeniOyunBtn.TabIndex = 0;
+            this.yeniOyunBtn.Text = "YENİ OYUN";
+            this.yeniOyunBtn.UseVisualStyleBackColor = false;
+            this.yeniOyunBtn.Click += new System.EventHandler(this.NewGame_Click);
             // 
             // label1
             // 
@@ -185,26 +189,39 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel3.Controls.Add(this.btnOrganikAtikBosalt);
+            this.panel3.Controls.Add(this.organikAtikEkleBtn);
+            this.panel3.Controls.Add(this.organikAtikBosaltBtn);
             this.panel3.Controls.Add(this.prgsBarOrganikAtik);
-            this.panel3.Controls.Add(this.lstOrganikAtik);
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.organikAtikListBox);
             this.panel3.Location = new System.Drawing.Point(220, 71);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(150, 256);
             this.panel3.TabIndex = 7;
             // 
-            // btnOrganikAtikBosalt
+            // organikAtikEkleBtn
             // 
-            this.btnOrganikAtikBosalt.BackColor = System.Drawing.Color.Gray;
-            this.btnOrganikAtikBosalt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrganikAtikBosalt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnOrganikAtikBosalt.Location = new System.Drawing.Point(13, 207);
-            this.btnOrganikAtikBosalt.Name = "btnOrganikAtikBosalt";
-            this.btnOrganikAtikBosalt.Size = new System.Drawing.Size(126, 38);
-            this.btnOrganikAtikBosalt.TabIndex = 6;
-            this.btnOrganikAtikBosalt.Text = "BOŞALT";
-            this.btnOrganikAtikBosalt.UseVisualStyleBackColor = false;
+            this.organikAtikEkleBtn.BackColor = System.Drawing.Color.Gray;
+            this.organikAtikEkleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.organikAtikEkleBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.organikAtikEkleBtn.Location = new System.Drawing.Point(13, 3);
+            this.organikAtikEkleBtn.Name = "organikAtikEkleBtn";
+            this.organikAtikEkleBtn.Size = new System.Drawing.Size(126, 30);
+            this.organikAtikEkleBtn.TabIndex = 12;
+            this.organikAtikEkleBtn.Text = "ORGANIK ATIK";
+            this.organikAtikEkleBtn.UseVisualStyleBackColor = false;
+            this.organikAtikEkleBtn.Click += new System.EventHandler(this.OrganikAtikEkleBtn_Click);
+            // 
+            // organikAtikBosaltBtn
+            // 
+            this.organikAtikBosaltBtn.BackColor = System.Drawing.Color.Gray;
+            this.organikAtikBosaltBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.organikAtikBosaltBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.organikAtikBosaltBtn.Location = new System.Drawing.Point(13, 207);
+            this.organikAtikBosaltBtn.Name = "organikAtikBosaltBtn";
+            this.organikAtikBosaltBtn.Size = new System.Drawing.Size(126, 38);
+            this.organikAtikBosaltBtn.TabIndex = 6;
+            this.organikAtikBosaltBtn.Text = "BOŞALT";
+            this.organikAtikBosaltBtn.UseVisualStyleBackColor = false;
             // 
             // prgsBarOrganikAtik
             // 
@@ -213,62 +230,50 @@
             this.prgsBarOrganikAtik.Size = new System.Drawing.Size(126, 23);
             this.prgsBarOrganikAtik.TabIndex = 8;
             // 
-            // lstOrganikAtik
+            // organikAtikListBox
             // 
-            this.lstOrganikAtik.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lstOrganikAtik.FormattingEnabled = true;
-            this.lstOrganikAtik.Location = new System.Drawing.Point(13, 38);
-            this.lstOrganikAtik.Name = "lstOrganikAtik";
-            this.lstOrganikAtik.Size = new System.Drawing.Size(126, 134);
-            this.lstOrganikAtik.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(13, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 25);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "ORGANİK ATIK";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.organikAtikListBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.organikAtikListBox.FormattingEnabled = true;
+            this.organikAtikListBox.Location = new System.Drawing.Point(13, 38);
+            this.organikAtikListBox.Name = "organikAtikListBox";
+            this.organikAtikListBox.Size = new System.Drawing.Size(126, 134);
+            this.organikAtikListBox.TabIndex = 7;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel4.Controls.Add(this.btnKagitBosalt);
-            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.kagitEkleBtn);
+            this.panel4.Controls.Add(this.kagitBosaltBtn);
             this.panel4.Controls.Add(this.prgsBarKagit);
-            this.panel4.Controls.Add(this.lstKagit);
+            this.panel4.Controls.Add(this.kagitListBox);
             this.panel4.Location = new System.Drawing.Point(387, 71);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(150, 256);
             this.panel4.TabIndex = 8;
             // 
-            // btnKagitBosalt
+            // kagitEkleBtn
             // 
-            this.btnKagitBosalt.BackColor = System.Drawing.Color.Gray;
-            this.btnKagitBosalt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKagitBosalt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnKagitBosalt.Location = new System.Drawing.Point(12, 207);
-            this.btnKagitBosalt.Name = "btnKagitBosalt";
-            this.btnKagitBosalt.Size = new System.Drawing.Size(126, 38);
-            this.btnKagitBosalt.TabIndex = 9;
-            this.btnKagitBosalt.Text = "BOŞALT";
-            this.btnKagitBosalt.UseVisualStyleBackColor = false;
+            this.kagitEkleBtn.BackColor = System.Drawing.Color.Gray;
+            this.kagitEkleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kagitEkleBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.kagitEkleBtn.Location = new System.Drawing.Point(12, 3);
+            this.kagitEkleBtn.Name = "kagitEkleBtn";
+            this.kagitEkleBtn.Size = new System.Drawing.Size(126, 30);
+            this.kagitEkleBtn.TabIndex = 13;
+            this.kagitEkleBtn.Text = "BOŞALT";
+            this.kagitEkleBtn.UseVisualStyleBackColor = false;
             // 
-            // label6
+            // kagitBosaltBtn
             // 
-            this.label6.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(12, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 25);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "KAĞIT";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.kagitBosaltBtn.BackColor = System.Drawing.Color.Gray;
+            this.kagitBosaltBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kagitBosaltBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.kagitBosaltBtn.Location = new System.Drawing.Point(12, 207);
+            this.kagitBosaltBtn.Name = "kagitBosaltBtn";
+            this.kagitBosaltBtn.Size = new System.Drawing.Size(126, 38);
+            this.kagitBosaltBtn.TabIndex = 9;
+            this.kagitBosaltBtn.Text = "BOŞALT";
+            this.kagitBosaltBtn.UseVisualStyleBackColor = false;
             // 
             // prgsBarKagit
             // 
@@ -277,50 +282,50 @@
             this.prgsBarKagit.Size = new System.Drawing.Size(126, 23);
             this.prgsBarKagit.TabIndex = 11;
             // 
-            // lstKagit
+            // kagitListBox
             // 
-            this.lstKagit.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lstKagit.FormattingEnabled = true;
-            this.lstKagit.Location = new System.Drawing.Point(12, 38);
-            this.lstKagit.Name = "lstKagit";
-            this.lstKagit.Size = new System.Drawing.Size(126, 134);
-            this.lstKagit.TabIndex = 10;
+            this.kagitListBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.kagitListBox.FormattingEnabled = true;
+            this.kagitListBox.Location = new System.Drawing.Point(12, 38);
+            this.kagitListBox.Name = "kagitListBox";
+            this.kagitListBox.Size = new System.Drawing.Size(126, 134);
+            this.kagitListBox.TabIndex = 10;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel5.Controls.Add(this.btnMetalBosalt);
-            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.metalEkleBtn);
+            this.panel5.Controls.Add(this.metalBosaltBtn);
             this.panel5.Controls.Add(this.prgsBarMetal);
-            this.panel5.Controls.Add(this.lstMetal);
+            this.panel5.Controls.Add(this.metalListBox);
             this.panel5.Location = new System.Drawing.Point(387, 339);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(150, 256);
             this.panel5.TabIndex = 9;
             // 
-            // btnMetalBosalt
+            // metalEkleBtn
             // 
-            this.btnMetalBosalt.BackColor = System.Drawing.Color.Gray;
-            this.btnMetalBosalt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMetalBosalt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnMetalBosalt.Location = new System.Drawing.Point(12, 211);
-            this.btnMetalBosalt.Name = "btnMetalBosalt";
-            this.btnMetalBosalt.Size = new System.Drawing.Size(126, 38);
-            this.btnMetalBosalt.TabIndex = 12;
-            this.btnMetalBosalt.Text = "BOŞALT";
-            this.btnMetalBosalt.UseVisualStyleBackColor = false;
+            this.metalEkleBtn.BackColor = System.Drawing.Color.Gray;
+            this.metalEkleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metalEkleBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.metalEkleBtn.Location = new System.Drawing.Point(12, 6);
+            this.metalEkleBtn.Name = "metalEkleBtn";
+            this.metalEkleBtn.Size = new System.Drawing.Size(126, 30);
+            this.metalEkleBtn.TabIndex = 15;
+            this.metalEkleBtn.Text = "BOŞALT";
+            this.metalEkleBtn.UseVisualStyleBackColor = false;
             // 
-            // label5
+            // metalBosaltBtn
             // 
-            this.label5.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(12, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 25);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "METAL";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metalBosaltBtn.BackColor = System.Drawing.Color.Gray;
+            this.metalBosaltBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metalBosaltBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.metalBosaltBtn.Location = new System.Drawing.Point(12, 211);
+            this.metalBosaltBtn.Name = "metalBosaltBtn";
+            this.metalBosaltBtn.Size = new System.Drawing.Size(126, 38);
+            this.metalBosaltBtn.TabIndex = 12;
+            this.metalBosaltBtn.Text = "BOŞALT";
+            this.metalBosaltBtn.UseVisualStyleBackColor = false;
             // 
             // prgsBarMetal
             // 
@@ -329,50 +334,50 @@
             this.prgsBarMetal.Size = new System.Drawing.Size(126, 23);
             this.prgsBarMetal.TabIndex = 14;
             // 
-            // lstMetal
+            // metalListBox
             // 
-            this.lstMetal.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lstMetal.FormattingEnabled = true;
-            this.lstMetal.Location = new System.Drawing.Point(12, 42);
-            this.lstMetal.Name = "lstMetal";
-            this.lstMetal.Size = new System.Drawing.Size(126, 134);
-            this.lstMetal.TabIndex = 13;
+            this.metalListBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.metalListBox.FormattingEnabled = true;
+            this.metalListBox.Location = new System.Drawing.Point(12, 42);
+            this.metalListBox.Name = "metalListBox";
+            this.metalListBox.Size = new System.Drawing.Size(126, 134);
+            this.metalListBox.TabIndex = 13;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel6.Controls.Add(this.btnCamBosalt);
-            this.panel6.Controls.Add(this.label4);
+            this.panel6.Controls.Add(this.camEkleBtn);
+            this.panel6.Controls.Add(this.camBosaltBtn);
             this.panel6.Controls.Add(this.prgsBarCam);
-            this.panel6.Controls.Add(this.lstCam);
+            this.panel6.Controls.Add(this.camListBox);
             this.panel6.Location = new System.Drawing.Point(220, 339);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(150, 256);
             this.panel6.TabIndex = 9;
             // 
-            // btnCamBosalt
+            // camEkleBtn
             // 
-            this.btnCamBosalt.BackColor = System.Drawing.Color.Gray;
-            this.btnCamBosalt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCamBosalt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCamBosalt.Location = new System.Drawing.Point(13, 211);
-            this.btnCamBosalt.Name = "btnCamBosalt";
-            this.btnCamBosalt.Size = new System.Drawing.Size(126, 38);
-            this.btnCamBosalt.TabIndex = 9;
-            this.btnCamBosalt.Text = "BOŞALT";
-            this.btnCamBosalt.UseVisualStyleBackColor = false;
+            this.camEkleBtn.BackColor = System.Drawing.Color.Gray;
+            this.camEkleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.camEkleBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.camEkleBtn.Location = new System.Drawing.Point(13, 6);
+            this.camEkleBtn.Name = "camEkleBtn";
+            this.camEkleBtn.Size = new System.Drawing.Size(126, 30);
+            this.camEkleBtn.TabIndex = 14;
+            this.camEkleBtn.Text = "BOŞALT";
+            this.camEkleBtn.UseVisualStyleBackColor = false;
             // 
-            // label4
+            // camBosaltBtn
             // 
-            this.label4.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(13, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 25);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "CAM";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.camBosaltBtn.BackColor = System.Drawing.Color.Gray;
+            this.camBosaltBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.camBosaltBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.camBosaltBtn.Location = new System.Drawing.Point(13, 211);
+            this.camBosaltBtn.Name = "camBosaltBtn";
+            this.camBosaltBtn.Size = new System.Drawing.Size(126, 38);
+            this.camBosaltBtn.TabIndex = 9;
+            this.camBosaltBtn.Text = "BOŞALT";
+            this.camBosaltBtn.UseVisualStyleBackColor = false;
             // 
             // prgsBarCam
             // 
@@ -381,14 +386,18 @@
             this.prgsBarCam.Size = new System.Drawing.Size(126, 23);
             this.prgsBarCam.TabIndex = 11;
             // 
-            // lstCam
+            // camListBox
             // 
-            this.lstCam.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lstCam.FormattingEnabled = true;
-            this.lstCam.Location = new System.Drawing.Point(13, 42);
-            this.lstCam.Name = "lstCam";
-            this.lstCam.Size = new System.Drawing.Size(126, 134);
-            this.lstCam.TabIndex = 10;
+            this.camListBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.camListBox.FormattingEnabled = true;
+            this.camListBox.Location = new System.Drawing.Point(13, 42);
+            this.camListBox.Name = "camListBox";
+            this.camListBox.Size = new System.Drawing.Size(126, 134);
+            this.camListBox.TabIndex = 10;
+            // 
+            // oyunTimer
+            // 
+            this.oyunTimer.Tick += new System.EventHandler(this.OyunTimer_Tick);
             // 
             // Form1
             // 
@@ -423,33 +432,34 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBoxAtık;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnNewGame;
-        private System.Windows.Forms.Button btnQuit;
-        private System.Windows.Forms.Label lblPoints;
+        private System.Windows.Forms.Button yeniOyunBtn;
+        private System.Windows.Forms.Button cikisBtn;
+        private System.Windows.Forms.Label puanLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.Label lbl_surelabel;
+        private System.Windows.Forms.Label sureLabel;
+        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox lstOrganikAtik;
-        private System.Windows.Forms.Button btnOrganikAtikBosalt;
+        private System.Windows.Forms.ListBox organikAtikListBox;
+        private System.Windows.Forms.Button organikAtikBosaltBtn;
         private System.Windows.Forms.ProgressBar prgsBarOrganikAtik;
-        private System.Windows.Forms.Button btnKagitBosalt;
+        private System.Windows.Forms.Button kagitBosaltBtn;
         private System.Windows.Forms.ProgressBar prgsBarKagit;
-        private System.Windows.Forms.ListBox lstKagit;
-        private System.Windows.Forms.Button btnMetalBosalt;
+        private System.Windows.Forms.ListBox kagitListBox;
+        private System.Windows.Forms.Button metalBosaltBtn;
         private System.Windows.Forms.ProgressBar prgsBarMetal;
-        private System.Windows.Forms.ListBox lstMetal;
-        private System.Windows.Forms.Button btnCamBosalt;
+        private System.Windows.Forms.ListBox metalListBox;
+        private System.Windows.Forms.Button camBosaltBtn;
         private System.Windows.Forms.ProgressBar prgsBarCam;
-        private System.Windows.Forms.ListBox lstCam;
+        private System.Windows.Forms.ListBox camListBox;
+        private System.Windows.Forms.Button organikAtikEkleBtn;
+        private System.Windows.Forms.Button kagitEkleBtn;
+        private System.Windows.Forms.Button metalEkleBtn;
+        private System.Windows.Forms.Button camEkleBtn;
+        private System.Windows.Forms.Timer oyunTimer;
     }
 }
 

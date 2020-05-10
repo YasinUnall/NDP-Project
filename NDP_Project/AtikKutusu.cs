@@ -16,9 +16,11 @@ namespace NDP_Project
 
         public int BosaltmaPuani { get; }
 
-        public AtikKutusu(int maxKapasite)
+        public AtikKutusu(int maxKapasite, int bosaltmaPuani)
         {
             this._maxKapasite = maxKapasite;
+            this.Kapasite = maxKapasite;
+            this.BosaltmaPuani = bosaltmaPuani;
         }
 
         public bool Ekle(Atik atik)
